@@ -1,9 +1,31 @@
 - name: My first play
   hosts: myhosts
+  vars:
+    common_package_to_install: [ ]
+    brew_packages_install: [ ]
+    windows_packages_install: [ ]
   tasks:
-   - name: Ping my hosts
-     ansible.builtin.ping:
+    -
+    - name: Ping my hosts
+      ansible.builtin.ping:
 
-   - name: Print message
-     ansible.builtin.debug:
-      msg: Hello world
+    - name: MacOs Setup
+      when: ansible_os_family == "Darwin"
+      block:
+        - name: MacOS
+          ansible.builtin.debug:
+            msg: Running script for {{ ansible_distribution }}
+
+    - name: Windows Setup
+      when: ansible_os_family == "Windows"
+      block:
+        - name: Windows
+          ansible.builtin.debug:
+            msg: Running script for {{ ansible_distribution }}
+
+    - name: Windows Setup
+      when: ansible_os_family != "Darwin" and  ansible_os_family != "Windows"
+      block:
+        - name: Unknown OS
+          ansible.builtin.debug:
+            msg: I dont have a configuration for {{ ansible_os_family }}
