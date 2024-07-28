@@ -34,8 +34,25 @@ Personal Project for automate the most common software used by my, for my mac an
 ## For mac/linux
  - Terminal
 
+# Usage
 
-# Run
+There are two options for this script:
+
+installing only non development tools
 ```
-./MacOs_configuration.sh
+./MacOs_configuration.sh --personal
 ```
+
+installing development tools
+```
+./MacOs_configuration.sh --development
+```
+
+if you want to install everything
+```
+./MacOs_configuration.sh --development --personal
+```
+
+
+
+https://github.com/mas-cli/mas

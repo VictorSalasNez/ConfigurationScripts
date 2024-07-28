@@ -8,8 +8,7 @@ usage(){
 }
 
 brew_installation(){
-  which -s brew
-  if [[ $? == 0 ]] ; then
+  if which -s brew == 0 ; then
     echo brew is already installed
     #brew update
   else
@@ -27,7 +26,29 @@ ohmyzsh_installation(){
   fi
 }
 
-echo $#
+install_brew_cask_packages(){
+  while read package
+  do
+    echo brew install --cask "${package}"
+  done < "brew_packages/cask_${1}.txt"
+}
+
+install_brew_packages(){
+  while read package
+  do
+    echo brew install "${package}"
+  done < "brew_packages/${1}.txt"
+}
+
+homebrew_package_installation() {
+  install_brew_cask_packages "${1}"
+  install_brew_packages "${1}"
+}
+
+
+brew_installation
+
+# $# number of parameters
 while [ $# -gt 0 ]; do
   case $1 in
     -h | --help)
@@ -35,10 +56,12 @@ while [ $# -gt 0 ]; do
       exit 0
       ;;
     -d | --development)
-      echo Installing development tools
+      echo Installing development tools -----------------
+      homebrew_package_installation development
       ;;
     -p | --personal)
-      echo Installing non-development tools
+      echo Installing non-development tools -----------------
+      homebrew_package_installation personal
       ;;
     *)
       echo "Invalid option: $1" >&2
@@ -48,12 +71,6 @@ while [ $# -gt 0 ]; do
   esac
   shift
 done
-
-
-#while read package
-#do
-#  echo brew install --cask $package
-#done < brew_packages/cast_development.txt
 
 
 # Install homebrew
