@@ -1,0 +1,7 @@
+git
+gh
+zsh-syntax-highlighting
+zsh-autosuggestions
+thefuck
+wget
+

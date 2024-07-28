@@ -1,0 +1,5 @@
+jetbrains-toolbox
+postman
+rectangle
+sublime-text
+docker
