@@ -8,12 +8,13 @@ usage(){
 }
 
 brew_installation(){
-  if which -s brew == 0 ; then
+  which -s brew
+  if [[ $? == 0 ]] ; then
     echo brew is already installed
     #brew update
   else
-      echo installing Homebrew
-    #/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "=============== installing Homebrew ==============="
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 }
 
@@ -21,22 +22,22 @@ ohmyzsh_installation(){
   if [ -d ~/.oh-my-zsh ]; then
     echo oh-my-zsh is already installed
   else
-    echo installing oh-my-zsh
-    #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    echo "=============== Installing oh-my-zsh ==============="
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   fi
 }
 
 install_brew_cask_packages(){
   while read package
   do
-    echo brew install --cask "${package}"
+    brew install --cask "${package}"
   done < "brew_packages/cask_${1}.txt"
 }
 
 install_brew_packages(){
   while read package
   do
-    echo brew install "${package}"
+    brew install "${package}"
   done < "brew_packages/${1}.txt"
 }
 
@@ -47,6 +48,7 @@ homebrew_package_installation() {
 
 
 brew_installation
+ohmyzsh_installation
 
 # $# number of parameters
 while [ $# -gt 0 ]; do
@@ -71,13 +73,3 @@ while [ $# -gt 0 ]; do
   esac
   shift
 done
-
-
-# Install homebrew
-  # Install development.txt packages
-  # Install packages
-  # Upgrade every package
-
-# Install oh my zsh
-  # Default terminal
-  # add plugins (history dirhistory macos)

@@ -29,9 +29,10 @@ if you want to install everything
 ```
 
 # Roadmap
-- [ ] install Xcode MacOs 
-  - [ ] try [Mas](https://github.com/mas-cli/mas) for automate appStore Apps
-- [ ] create script for Windows 
-- [ ] create script for linux
-- [ ] use [Ansible](https://www.ansible.com/) or [Chocolatey](https://chocolatey.org/)
+- [ ] Add plugins and themes to my zsh
+- [ ] Install Xcode MacOs 
+  - [ ] Try [Mas](https://github.com/mas-cli/mas) for automate appStore Apps
+- [ ] Create script for Windows 
+- [ ] Create script for linux
+- [ ] Use [Ansible](https://www.ansible.com/) or [Chocolatey](https://chocolatey.org/)
   - [ ] Test on homelab
