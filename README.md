@@ -28,9 +28,7 @@ Personal Project for automate the most common software used by my, for my mac an
    - jetbrains-toolbox
    - Postman
    - Rectangle (windows size managger on mac)
-   - thefuck
    - Docker
-
 
 # Requirements
 ## For mac/linux
