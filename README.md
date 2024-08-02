@@ -29,7 +29,8 @@ if you want to install everything
 ```
 
 # Roadmap
-- [ ] Add plugins and themes to my zsh
+- [x] Add plugins and themes to my zsh
+- [ ] Kindle App
 - [ ] Install Xcode MacOs 
   - [ ] Try [Mas](https://github.com/mas-cli/mas) for automate appStore Apps
 - [ ] Create script for Windows 

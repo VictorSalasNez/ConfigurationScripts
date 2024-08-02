@@ -1,3 +1,5 @@
+FailedBrewInstallation=()
+FailedBrewCastInstallation=()
 
 usage(){
   echo "Usage: $0 [OPTIONS]"
@@ -30,14 +32,22 @@ ohmyzsh_installation(){
 install_brew_cask_packages(){
   while read package
   do
-    brew install --cask "${package}"
+    if brew install --cask "${package}" ; then
+      echo " package ${package} successfully installed"
+    else
+      FailedBrewCastInstallation+=("${package}")
+    fi
   done < "brew_packages/cask_${1}.txt"
 }
 
 install_brew_packages(){
   while read package
   do
-    brew install "${package}"
+    if brew install "${package}" ; then
+      echo " package ${package} successfully installed"
+    else
+      FailedBrewInstallation+=("${package}")
+    fi
   done < "brew_packages/${1}.txt"
 }
 
@@ -46,6 +56,17 @@ homebrew_package_installation() {
   install_brew_packages "${1}"
 }
 
+apppend_pluging_activation() {
+  echo "========== activating plugins ============"
+  echo 'eval $(thefuck --alias)' >>  ~/.zshrc
+  echo "source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >>  ~/.zshrc
+  echo "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >>  ~/.zshrc
+}
+
+change_theme() {
+  echo "========== add 2 last directories ============"
+  sed -i '' "s/%c%/%2~%/g" "${ZSH}/themes/robbyrussell.zsh-theme"
+}
 
 brew_installation
 ohmyzsh_installation
@@ -73,3 +94,10 @@ while [ $# -gt 0 ]; do
   esac
   shift
 done
+
+apppend_pluging_activation
+change_theme
+
+echo "=========== packages that fail ============"
+echo "packages: ${FailedBrewInstallation[*]}"
+echo "cast: ${FailedBrewCastInstallation[*]}"
