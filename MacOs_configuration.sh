@@ -64,7 +64,7 @@ apppend_pluging_activation() {
 }
 
 change_theme() {
-  echo "========== add 2 last directories ============"
+  echo "========== add 2 last directories in terminal============"
   sed -i '' "s/%c%/%2~%/g" "${ZSH}/themes/robbyrussell.zsh-theme"
 }
 

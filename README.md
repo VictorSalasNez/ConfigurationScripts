@@ -11,6 +11,7 @@ I always format my PC's every 1-2 years for keeping everything clean and fresh. 
 
 # Getting Started
 
+# Usage
 There are two options for this script:
 
 installing only non development tools
@@ -29,11 +30,16 @@ if you want to install everything
 ```
 
 # Roadmap
-- [x] Add plugins and themes to my zsh
-- [ ] Kindle App
-- [ ] Install Xcode MacOs 
-  - [ ] Try [Mas](https://github.com/mas-cli/mas) for automate appStore Apps
-- [ ] Create script for Windows 
-- [ ] Create script for linux
-- [ ] Use [Ansible](https://www.ansible.com/) or [Chocolatey](https://chocolatey.org/)
+- MAC
+  - [x] Add plugins and themes to my zsh
+  - [ ] Configure Personal Git
+  - [ ] Plugins JetBrains
+  - [ ] Install Xcode MacOs 
+    - [ ] Try [Mas](https://github.com/mas-cli/mas) for automate appStore Apps
+  - [ ] Kindle App
+- Create script for Windows
+  - [ ] Software installation
+  - [ ] Windows Activation?
+  - [ ] See [Chocolatey](https://chocolatey.org/)
+- [ ] Create script for linux (TBD)
   - [ ] Test on homelab
